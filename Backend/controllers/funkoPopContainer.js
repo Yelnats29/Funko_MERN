@@ -3,7 +3,7 @@ const router = express.Router();
 const FunkoPop = require('../models/funkoSchema.js');
 
 
-// CREATE - POST -  /funkoPop
+// CREATE - POST -  /api/funkopops
 // create new Funko Pop
 router.post('/api/funkopops', async (req, res) => {
     // Add a message to test the route on Postman
@@ -19,7 +19,7 @@ router.post('/api/funkopops', async (req, res) => {
 });
 
 
-// READ - GET - HOME PAGE - /funkoPop
+// READ - GET - HOME PAGE - /api/funkopops
 // index for all Funko Pops
 router.get('/api/funkopops', async (req, res) => {
     try {
@@ -32,7 +32,7 @@ router.get('/api/funkopops', async (req, res) => {
 
 
 
-// READ - GET - SHOW ROUTE- /funkoPop/:funkoId
+// READ - GET - SHOW ROUTE- /api/funkopops/:funkoId
 // show Funko
 router.get('/api/funkopops/:funkoId', async (req, res) => {
     try {
@@ -56,7 +56,7 @@ router.get('/api/funkopops/:funkoId', async (req, res) => {
 });
 
 
-// DELETE - DELETE - /funkoPop/:funkoId
+// DELETE - DELETE - /api/funkopops/:funkoId
 // delete Funko
 router.delete('/api/funkopops/:funkoId', async (req, res) => {
     try {
@@ -78,18 +78,18 @@ router.delete('/api/funkopops/:funkoId', async (req, res) => {
 });
 
 
-// UPDATE - PUT - /funkoPop/:funkoId
+// UPDATE - PUT - /api/funkopops/:funkoId
 // update Funko
 router.put('/api/funkopops/:funkoId', async (req, res) => {
     try {
         // Add query to update a single Funko Pop
-        const updatedFunko = await FunkoPop.findByIdAndUpdate(req.params.funkoId, { new: true, runValidators: true });
+        const updatedFunko = await FunkoPop.findByIdAndUpdate(req.params.funkoId, req.body, { new: true, runValidators: true });
         // Add a check for a not found Funko Pop
         if (!updatedFunko) {
             res.status(404);
             throw new Error('Funko Pop not found.');
         }
-        // Add a JSON response with the updated task
+        // Add a JSON response with the updated Funko Pop
         res.status(200).json(updatedFunko);
     } catch (error) {
         // Add code for errors

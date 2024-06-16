@@ -9,7 +9,10 @@ const methodOverride = require('method-override');
 // Import the controller
 const FunkoPopRouter = require('./controllers/funkoPopContainer.js');
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
@@ -19,8 +22,8 @@ app.use(cors());
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-// Add the Router to the '/funkoPop' route
-app.use('/funkoPop', FunkoPopRouter);
+// Add the Router to the correct route
+app.use('/', FunkoPopRouter);
 
 
 app.listen(3000, () => {
