@@ -1,15 +1,12 @@
-const mongoose = require('mongoose');
-const faker = require('faker');
-const FunkoPop = require('./models/FunkoPop');
 const dotenv = require('dotenv');
 dotenv.config();
+const mongoose = require('mongoose');
+const { faker } = require('@faker-js/faker');
+const FunkoPop = require('./models/funkoSchema.js');
 
 const generateFunkoPops = async (num) => {
     try {
-        await mongoose.connect(process.env.MONGOBD_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(process.env.MONGODB_URI);
 
         const funkoPops = [];
 
@@ -17,11 +14,10 @@ const generateFunkoPops = async (num) => {
             const funkoPop = new FunkoPop({
                 name: faker.commerce.productName(),
                 series: faker.lorem.word(),
-                releaseYear: faker.date.past(10).getFullYear(),
-                price: faker.commerce.price(10, 100),
-                imageUrl: faker.image.imageUrl(),
-                description: faker.lorem.sentence
-                    ()
+                releaseYear: faker.date.past({ years: 10 }).getFullYear(),
+                price: faker.commerce.price({ min: 10, max: 100 }),
+                imageUrl: faker.image.url(),
+                description: faker.lorem.sentence()
             });
 
             funkoPops.push(funkoPop);
