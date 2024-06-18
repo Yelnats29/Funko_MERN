@@ -1,33 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import * as FunkoPopServices from '../services/FunkoPopService'
+import FunkoHome from './components/Home/home'
+import FunkoShow from './components/Show/show'
+import FunkoCreate from './components/Create/create'
+import FunkoUpdate from './components/Update/update'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [funkoArray, setFunkoArray] = useState([]);
+
+  const Navigate = useNavigate();
+  
+  // function to show all funko pops
+    const getAllFunkoPops = async () => {
+      const allFunkoPops = await FunkoPopServices.index()
+      setFunkoArray(allFunkoPops)
+    };
+
+
+// function to create a new funko pop
+  const createFunkoPops = async (funkoPop) => {
+    await FunkoPopServices.create(funkoPop)
+    getAllFunkoPops()
+    Navigate('/funkopops')
+  }
+
+// function to update funko pop
+const updateFunkoPops = async (funkoPop) => {
+  await FunkoPopServices.updateFunkoPop(funkoPop, funko._id)
+  getAllFunkoPops()
+  Navigate(`/funkopops/${funko._id}`)
+};
+
+
+//function to delete funko pop
+const deleteFunkoPops = async (funkoId) => {
+  await FunkoPopServices.deleteFunkoPop(funkoId)
+  getAllFunkoPops()
+  Navigate('/funkopops')
+};
+
+
+useEffect(() => {
+  getAllFunkoPops()
+}, [])
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+      <Routes>
+        <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
+        <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray}}/>}/>
+        <Route path='/funkopops/new' element={<FunkoCreate {...{funkoArray}}/>}/>
+        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray}}/>}/>
+      </Routes>
     </>
   )
 }
