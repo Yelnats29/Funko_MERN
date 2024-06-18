@@ -30,9 +30,9 @@ const Home = () => {
                     <ul>
                         {funkoPop.map(funko => (
                             // Generate a list item for each Funko Pop
-                            <li key={funko.id}>
-                                {/* Link to the detail page of each Funko Pop */}
-                                <Link to={`/funkopops/${funko.id}`}>{funko.name} - ${funko.price}</Link>
+                            <li key={funko._id}>
+                                {/* Link to the show page of each Funko Pop */}
+                                <Link to={`/funkopops/${funko._id}`}>{funko.name} - ${funko.price}</Link>
                             </li>
                         ))}
                     </ul>

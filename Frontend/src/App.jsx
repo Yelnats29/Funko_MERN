@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import * as FunkoPopServices from '../services/FunkoPopService'
 import FunkoHome from './components/Home/home'
-import FunkoShow from './components/Show/show'
-import FunkoCreate from './components/Create/create'
-import FunkoUpdate from './components/Update/update'
+// import FunkoShow from './components/Show/show'
+// import FunkoCreate from './components/Create/create'
+// import FunkoUpdate from './components/Update/update'
 import Navbar from './Navbar/Nav'
 import './App.css'
 
-function App() {
+const App = () => {
   const [funkoArray, setFunkoArray] = useState([]);
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   
   // function to show all funko pops
     const getAllFunkoPops = async () => {
@@ -24,14 +24,14 @@ function App() {
   const createFunkoPops = async (funkoPop) => {
     await FunkoPopServices.create(funkoPop)
     getAllFunkoPops()
-    Navigate('/funkopops')
+    navigate('/funkopops')
   }
 
 // function to update funko pop
-const updateFunkoPops = async (funkoPop) => {
-  await FunkoPopServices.updateFunkoPop(funkoPop, funko._id)
+const updateFunkoPops = async (funkoPop, funkoId) => {
+  await FunkoPopServices.updateFunkoPop(funkoPop, funkoId)
   getAllFunkoPops()
-  Navigate(`/funkopops/${funko._id}`)
+  navigate(`/funkopops/${funko._id}`)
 };
 
 
@@ -39,7 +39,7 @@ const updateFunkoPops = async (funkoPop) => {
 const deleteFunkoPops = async (funkoId) => {
   await FunkoPopServices.deleteFunkoPop(funkoId)
   getAllFunkoPops()
-  Navigate('/funkopops')
+  navigate('/funkopops')
 };
 
 
@@ -54,12 +54,12 @@ useEffect(() => {
       <Navbar />
       <Routes>
         <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
-        <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray, deleteFunkoPops}}/>}/>
+        {/* <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray, deleteFunkoPops}}/>}/>
         <Route path='/funkopops/new' element={<FunkoCreate {...{funkoArray, createFunkoPops}}/>}/>
-        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/>
+        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/> */}
       </Routes>
     </>
-  )
-}
+  );
+};
 
 export default App
