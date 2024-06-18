@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import * as FunkoPopServices from '../services/FunkoPopService'
 import FunkoHome from './components/Home/home'
 // import FunkoShow from './components/Show/show'
-// import FunkoCreate from './components/Create/create'
+import FunkoCreate from './components/Create/create'
 // import FunkoUpdate from './components/Update/update'
 import Navbar from './Navbar/Nav'
 import './App.css'
@@ -54,9 +54,9 @@ useEffect(() => {
       <Navbar />
       <Routes>
         <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
-        {/* <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray, deleteFunkoPops}}/>}/>
-        <Route path='/funkopops/new' element={<FunkoCreate {...{funkoArray, createFunkoPops}}/>}/>
-        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/> */}
+        {/* <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray, deleteFunkoPops}}/>}/> */}
+        <Route path='/funkopops/new' element={<FunkoCreate createFunkoPops={createFunkoPops}/>}/>
+        {/* <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/> */}
       </Routes>
     </>
   );
