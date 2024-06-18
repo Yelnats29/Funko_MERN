@@ -5,6 +5,7 @@ import FunkoHome from './components/Home/home'
 import FunkoShow from './components/Show/show'
 import FunkoCreate from './components/Create/create'
 import FunkoUpdate from './components/Update/update'
+import Navbar from './Navbar/Nav'
 import './App.css'
 
 function App() {

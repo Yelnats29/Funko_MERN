@@ -27,12 +27,12 @@ const show = async (funkoId) => {
 }
 
 // Create a new Funko Pop
-const create = async (funko) => {
+const create = async (funkoPop) => {
 	try {
 		const res = await fetch(BASE_URL, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(funko),
+			body: JSON.stringify(funkoPop),
 		});
 		return res.json();
 	} catch (err) {
@@ -40,8 +40,9 @@ const create = async (funko) => {
 	}
 };
 
+
 // Update a Funko Pop
-const updateFunkoPop = async (funko, funkoId) => {
+const updateFunkoPop = async (funkoPop, funkoId) => {
     // Construct the request URL by concatenating the base URL and the funkoID
     // The trailing slash is added to ensure the URL is properly formatted
     const REQ_URL = `${BASE_URL}${funkoId}/`;
@@ -53,7 +54,7 @@ const updateFunkoPop = async (funko, funkoId) => {
             headers: {
                 'Content-Type': 'application/json', // Set the content type header to JSON
             },
-            body: JSON.stringify(funko), // Convert the funko object to a JSON string and include it in the request body
+            body: JSON.stringify(funkoPop), // Convert the funko object to a JSON string and include it in the request body
         });
 
         // Check if the response status is not in the 200-299 range, indicating an error
