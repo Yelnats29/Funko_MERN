@@ -53,9 +53,9 @@ useEffect(() => {
       <Navbar />
       <Routes>
         <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
-        <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray}}/>}/>
-        <Route path='/funkopops/new' element={<FunkoCreate {...{funkoArray}}/>}/>
-        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray}}/>}/>
+        <Route path='/funkopops/:funkoId' element={<FunkoShow {...{funkoArray, deleteFunkoPops}}/>}/>
+        <Route path='/funkopops/new' element={<FunkoCreate {...{funkoArray, createFunkoPops}}/>}/>
+        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/>
       </Routes>
     </>
   )
