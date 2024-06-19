@@ -4,7 +4,7 @@ import * as FunkoPopServices from '../services/FunkoPopService'
 import FunkoHome from './components/Home/home'
 import FunkoShow from './components/Show/show'
 import FunkoCreate from './components/Create/create'
-// import FunkoUpdate from './components/Update/update'
+import FunkoUpdate from './components/Update/update'
 import Navbar from './Navbar/Nav'
 import './App.css'
 
@@ -28,8 +28,8 @@ const App = () => {
   }
 
 // function to update funko pop
-const updateFunkoPops = async (funkoPop, funkoId) => {
-  await FunkoPopServices.updateFunkoPop(funkoPop, funkoId)
+const updateFunkoPops = async (funko, funkoId) => {
+  await FunkoPopServices.updateFunkoPop(funko, funkoId)
   getAllFunkoPops()
   navigate(`/funkopops/${funko._id}`)
 };
@@ -56,7 +56,7 @@ useEffect(() => {
         <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
         <Route path='/funkopops/:funkoId' element={<FunkoShow deleteFunkoPops={deleteFunkoPops}/>}/>
         <Route path='/funkopops/new' element={<FunkoCreate createFunkoPops={createFunkoPops}/>}/>
-        {/* <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate {...{funkoArray, updateFunkoPops}}/>}/> */}
+        <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate updateFunkoPops={updateFunkoPops}/>}/>
       </Routes>
     </>
   );
