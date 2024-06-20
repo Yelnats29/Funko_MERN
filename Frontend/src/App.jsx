@@ -7,6 +7,7 @@ import FunkoShow from './components/Show/show';
 import FunkoCreate from './components/Create/create';
 import FunkoUpdate from './components/Update/update';
 import Navbar from './Navbar/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 const App = () => {
@@ -55,7 +56,7 @@ useEffect(() => {
       <Navbar />
       <Routes>
         <Route path='/' element={<FunkoHome/>}/>
-        <Route path='/funkopops' element={<FunkoCollection {...{funkoArray}}/>}/>
+        <Route path='/funkopops' element={<FunkoCollection funkoArray={funkoArray}/>}/>
         <Route path='/funkopops/:funkoId' element={<FunkoShow deleteFunkoPops={deleteFunkoPops}/>}/>
         <Route path='/funkopops/new' element={<FunkoCreate createFunkoPops={createFunkoPops}/>}/>
         <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate updateFunkoPops={updateFunkoPops}/>}/>
