@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './searchbar.css'
 
-const SearchBar = ({onSearch, results}) => {
+const SearchBar = ({ onSearch, results }) => {
     const [search, setSearch] = useState('');
 
 
@@ -11,31 +11,31 @@ const SearchBar = ({onSearch, results}) => {
         onSearch(value);
     };
 
-//     return (
-//         <div className="search-container">
-//             <input
-//                 type="text"
-//                 placeholder="Search..."
-//                 value={search}
-//                 onChange={handleInputChange}
-//             />
-//             {results.length > 0}
-//         </div>
-//     );
-// };
+    //     return (
+    //         <div className="search-container">
+    //             <input
+    //                 type="text"
+    //                 placeholder="Search..."
+    //                 value={search}
+    //                 onChange={handleInputChange}
+    //             />
+    //             {results.length > 0}
+    //         </div>
+    //     );
+    // };
 
-return (
-    <div className="mb-4">
-        <input
-            type="text"
-            className='form-control'
-            placeholder="Search..."
-            value={search}
-            onChange={handleInputChange}
-        />
-        {results.length > 0}
-    </div>
-);
+    return (
+        <div className="mb-4">
+            <input
+                type="text"
+                className='form-control'
+                placeholder="Search..."
+                value={search}
+                onChange={handleInputChange}
+            />
+            {results.length > 0}
+        </div>
+    );
 };
 
 
