@@ -11,7 +11,7 @@ const Collection = () => {
 
     useEffect(() => {
         // Make a GET request to the API to fetch Funko Pop data
-        axios.get('http://localhost:3000/api/funkopops/')
+        axios.get('http://54.196.232.39:3000/api/funkopops/')
             .then(response => {
                 // On success, update the 'Funko Pops' state with the fetched data
                 setFunkoPop(response.data);
