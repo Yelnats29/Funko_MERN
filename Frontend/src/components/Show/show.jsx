@@ -26,7 +26,7 @@ const ShowFunkoPop = ({deleteFunkoPops}) => {
 
   return (
     <div id="show-wrapper">
-        <h1>Funko Pop Details</h1>
+        <h1>Here Are The Details...</h1>
         <div id="show-container">
           <h3>Name: </h3>
           <p>{funko.name}</p>

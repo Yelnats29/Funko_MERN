@@ -28,26 +28,52 @@ const Collection = () => {
         setFilteredFunkos(filtered);
     };
 
-    return (
-        <>
-        <div className="collection-container">
-        <h1>Welcome To My Randomly Generated Collection</h1>
-        <h5>It's Weird To Me Too!</h5>
-            <Search onSearch={handleSearch} results={filteredFunkos} />
-            <div className="funkos-list">
-                {filteredFunkos.map((funko) => (
-                    <div key={funko._id} className="funko-item">
-                        <h2><Link to={`/funkopops/${funko._id}`}>{funko.name} - ${funko.price}</Link></h2>
-                        <p>{funko.series}</p>
-                        <p>{funko.releaseYear}</p>
-                        <img src={funko.imageUrl} alt={funko.name} />
-                        <p>{funko.description}</p>
+//     return (
+//         <>
+//         <div className="collection-container">
+//         <h1>Welcome To My Randomly Generated Collection</h1>
+//         <h5>It's Weird To Me Too!</h5>
+//             <Search onSearch={handleSearch} results={filteredFunkos} />
+//             <div className="funkos-list">
+//                 {filteredFunkos.map((funko) => (
+//                     <div key={funko._id} className="funko-item">
+//                         <h2><Link to={`/funkopops/${funko._id}`}>{funko.name} - ${funko.price}</Link></h2>
+//                         <p>{funko.series}</p>
+//                         <p>{funko.releaseYear}</p>
+//                         <img src={funko.imageUrl} alt={funko.name} />
+//                         <p>{funko.description}</p>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//         </>
+//     );
+// };
+
+return (
+    <>
+    <div className="container mt-4">
+        <h1 className="text-center mb-4">Welcome To My Randomly Generated Collection</h1>
+        <h5 className="text-center mb-4">It's Weird To Me Too!</h5>
+        <Search onSearch={handleSearch} results={filteredFunkos} />
+        <div className="row">
+            {filteredFunkos.map((funko) => (
+                <div key={funko._id} className="col-md-4 mb-4">
+                    <div className="card h-100">
+                        <img src={funko.imageUrl} className="card-img-top" alt={funko.name} />
+                        <div className="card-body">
+                            <h5 className="card-title"><Link to={`/funkopops/${funko._id}`}>{funko.name} - ${funko.price}</Link></h5>
+                            <p className="card-text">{funko.series}</p>
+                            <p className="card-text">{funko.releaseYear}</p>
+                            <p className="card-text">{funko.description}</p>
+                        </div>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
-        </>
-    );
+    </div>
+    </>
+);
 };
 
 
