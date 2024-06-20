@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import * as FunkoPopServices from '../services/FunkoPopService'
-import FunkoHome from './components/Home/home'
-import FunkoShow from './components/Show/show'
-import FunkoCreate from './components/Create/create'
-import FunkoUpdate from './components/Update/update'
-import Navbar from './Navbar/Nav'
+import * as FunkoPopServices from '../services/FunkoPopService';
+import FunkoHome from './components/Home/home';
+import FunkoCollection from './components/Collection/collection';
+import FunkoShow from './components/Show/show';
+import FunkoCreate from './components/Create/create';
+import FunkoUpdate from './components/Update/update';
+import Navbar from './Navbar/Nav';
 import './App.css'
 
 const App = () => {
@@ -53,7 +54,8 @@ useEffect(() => {
     <>
       <Navbar />
       <Routes>
-        <Route path='/funkopops' element={<FunkoHome {...{funkoArray}}/>}/>
+        <Route path='/' element={<FunkoHome/>}/>
+        <Route path='/funkopops' element={<FunkoCollection {...{funkoArray}}/>}/>
         <Route path='/funkopops/:funkoId' element={<FunkoShow deleteFunkoPops={deleteFunkoPops}/>}/>
         <Route path='/funkopops/new' element={<FunkoCreate createFunkoPops={createFunkoPops}/>}/>
         <Route path='/funkopops/:funkoId/edit' element={<FunkoUpdate updateFunkoPops={updateFunkoPops}/>}/>

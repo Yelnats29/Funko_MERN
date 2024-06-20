@@ -69,7 +69,7 @@ const CreateFunkoPop = ({createFunkoPops}) => {
 
     return ( 
         <div id='create-wrapper'>
-            <h1 id='create-header'>Create a New Funko Pop</h1>
+            <h1 id='create-header'>Create Something Weird</h1>
             <div id='create-container'>
                 <form className='add-funkopop' onSubmit={handleSubmit}>
                     <label htmlFor="name">Name:</label><br />
