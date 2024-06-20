@@ -30,7 +30,7 @@ const Collection = () => {
 
     return (
         <>
-        <div className="home-container">
+        <div className="collection-container">
         <h1>Welcome To My Randomly Generated Collection</h1>
         <h5>It's Weird To Me Too!</h5>
             <Search onSearch={handleSearch} results={filteredFunkos} />
@@ -50,26 +50,6 @@ const Collection = () => {
     );
 };
 
-
-{/* //         <>
-//             <div id='collection-wrapper'> 
-//                 <h1>Welcome to the Funko Collection</h1>
-//                 <div id="collection-container">
-//                     {/* List of Funko Pops */}
-//                     <ul>
-//                         {funkoPop.map(funko => ( */}
-//                             // Generate a list item for each Funko Pop
-//                             <li key={funko._id}>
-//                                 {/* Link to the show page of each Funko Pop */}
-//                                 <Link to={`/funkopops/${funko._id}`}>{funko.name} - ${funko.price}</Link>
-//                             </li>
-//                         ))}
-//                     </ul>
-//                 </div>
-//             </div>
-//         </>
-//     )
-// };
 
 export default Collection
 
